@@ -28,6 +28,7 @@ body {
     width: 80%;
     margin: 20px auto;
     flex:1;
+    min-height: 75vh;
     padding: 20px;
     background-color: black;  /* Black background for container */
     color: white;  /* White text inside the container */
@@ -97,10 +98,9 @@ body {
   }
   
   footer {
-    margin-top: auto;
-    width: 100%;
-    position: absolute;
-    bottom:0;
+    color: white;  /* Footer text color */
+    text-align: center;
+    padding: 5px 0;
 }
 
 footer p {

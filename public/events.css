@@ -16,6 +16,13 @@
   margin: 0 10px;
 }
 
+  
+  /* Links (navigation) */
+  a {
+    color: yellow;           /* Yellow color for links */
+    text-decoration: none;    /* Remove underline from links */
+  }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #5a0606;  /* Dark red background for the outer page */
@@ -26,6 +33,7 @@ body {
   /* Events Page container */
   .container {
     width: 80%;
+    min-height: 75vh;
     margin: 20px auto;
     padding: 20px;
     background-color: black;  /* Black background for the container */
@@ -93,12 +101,10 @@ body {
   }
   
   footer {
-    margin-top: auto;
-    width: 100%;
-    position: absolute;
-    bottom:0;
+    color: white;  /* Footer text color */
+    text-align: center;
+    padding: 5px 0;
 }
-
 footer p {
     font-size: 12px;
     text-align: center;
