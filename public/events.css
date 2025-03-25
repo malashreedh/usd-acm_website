@@ -1,0 +1,94 @@
+/* General Styles for the Events Page */
+
+.navbar {
+  text-align: center;
+}
+
+.navbar ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5a0606;  /* Dark red background for the outer page */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Events Page container */
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: black;  /* Black background for the container */
+    color: white;             /* White text inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;      /* Optional: Round corners */
+  }
+  
+  /* Header Text Color */
+  h1 {
+    color: lightblue;         /* Light blue for the header */
+    text-align: center;
+  }
+  
+  h2 {
+    color: lightcyan;         /* Light cyan for subheaders */
+  }
+  
+  /* Events list container */
+  #events-list {
+    margin-top: 20px;
+  }
+  
+  /* Event card styles */
+  .event-card {
+    background-color: #333;   /* Dark grey background for event cards */
+    color: white;             /* White text inside the event card */
+    border: 1px solid #555;   /* Darker grey border for contrast */
+    border-radius: 8px;       /* Rounded corners for event cards */
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Event card title */
+  .event-card h2 {
+    font-size: 1.5rem;           /* Large title for event name */
+    margin-bottom: 10px;
+    color: lightcyan;            /* Light cyan color for event title */
+  }
+  
+  /* Event card description */
+  .event-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: lightyellow;          /* Light yellow for event description text */
+  }
+  
+  .event-card strong {
+    font-weight: bold;           /* Make the strong tags bold */
+  }
+  
+  /* Button styles (optional, if you add buttons later) */
+  button {
+    background-color: #555;  /* Dark grey background for buttons */
+    color: white;             /* White text for buttons */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #888;  /* Lighter grey on hover for button */
+  }
+  

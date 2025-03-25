@@ -1,0 +1,96 @@
+/* General Styles for Roster Page */
+
+.navbar {
+  text-align: center;
+}
+
+.navbar ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5a0606;  /* Dark red background */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Events Page container */
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: black;  /* Black background for the container */
+    color: white;             /* White text inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;      /* Optional: Round corners */
+  }
+  
+  /* Header Text Color */
+  h1 {
+    color: lightblue;         /* Light blue for the header */
+    text-align: center;
+  }
+  
+  /* Roster Cards Layout */
+  #roster-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Flexible grid for responsiveness */
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Individual Roster Card */
+  .roster-card {
+    background-color: #f9f9f9;   /* Light grey background for cards */
+    color: black;                 /* Black text for all text inside the card */
+    border: 1px solid #ddd;      /* Light grey border */
+    border-radius: 8px;          /* Rounded corners for cards */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Icon inside Roster Card */
+  .roster-card .icon img {
+    width: 100px;  /* Icon width */
+    height: 100px; /* Icon height */
+    margin-bottom: 10px;
+  }
+  
+  /* Title Styling */
+  .roster-card h2 {
+    font-size: 1.2rem;           /* Font size for position titles */
+    margin-bottom: 10px;
+    color: black;                /* Black for position title */
+  }
+  
+  /* Name Styling */
+  .roster-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .roster-card span {
+    color: black;                /* Black for member names */
+    font-weight: bold;           /* Bold member names */
+  }
+  
+  /* Links (navigation) */
+  a {
+    color: yellow;           /* Yellow color for links */
+    text-decoration: none;    /* Remove underline from links */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

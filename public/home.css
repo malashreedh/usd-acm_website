@@ -1,0 +1,97 @@
+/* General Styles */
+
+.navbar {
+  text-align: center;
+}
+
+.navbar ul {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5a0606;  /* Dark red background */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main container styles */
+  .container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: black;  /* Black background for container */
+    color: white;  /* White text inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;  /* Optional: Round corners */
+  }
+  
+  /* Header Text Color */
+  h1, h2 {
+    color: lightblue;         /* Light blue for main header and sub-header */
+    text-align: center;  /* Center align the main header */
+  }
+  
+  /* Paragraphs and other text inside the container */
+  p {
+    color: lightgreen;        /* Light green for paragraph text */
+    font-size: 1rem;          /* Adjusted font size for readability */
+  }
+  
+  /* Links (navigation) */
+  a {
+    color: yellow;           /* Yellow color for links */
+    text-decoration: none;    /* Remove underline from links */
+  }
+  
+  a:hover {
+    text-decoration: underline;  /* Underline on hover */
+  }
+  
+  /* Event Card Styling */
+  .event-card {
+    background-color: #f9f9f9;   /* Light grey background for event cards */
+    border: 1px solid #ddd;      /* Light grey border */
+    border-radius: 8px;          /* Rounded corners for event cards */
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Event Card Title */
+  .event-card h2 {
+    font-size: 1.5rem;           /* Large title for event name */
+    margin-bottom: 10px;
+    color: lightcyan;            /* Light cyan color for event title */
+  }
+  
+  /* Event Card Description */
+  .event-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: lightyellow;          /* Light yellow for event description text */
+  }
+  
+  .event-card strong {
+    font-weight: bold;           /* Make the strong tags bold */
+  }
+  
+  /* Adding some padding and margins to improve layout */
+  .event-card p {
+    line-height: 1.5;            /* Improve readability */
+    font-size: 1rem;             /* Set font size for description */
+  }
+  
+  /* Add spacing between the event cards */
+  .event-card + .event-card {
+    margin-top: 20px;
+  }
+  
