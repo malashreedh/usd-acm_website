@@ -27,6 +27,7 @@ body {
   .container {
     width: 80%;
     margin: 20px auto;
+    flex:1;
     padding: 20px;
     background-color: black;  /* Black background for container */
     color: white;  /* White text inside the container */
@@ -95,3 +96,16 @@ body {
     margin-top: 20px;
   }
   
+  footer {
+    margin-top: auto;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+}
+
+footer p {
+    font-size: 12px;
+    text-align: center;
+    color:  white!important;
+    font-family: 'Raleway', sans-serif;
+}

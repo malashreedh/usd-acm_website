@@ -92,3 +92,16 @@ body {
     background-color: #888;  /* Lighter grey on hover for button */
   }
   
+  footer {
+    margin-top: auto;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+}
+
+footer p {
+    font-size: 12px;
+    text-align: center;
+    color:  white!important;
+    font-family: 'Raleway', sans-serif;
+}
