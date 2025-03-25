@@ -11,11 +11,11 @@ app.use(express.static('public'));
 
 // Create a new instance of the PostgreSQL client
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'acm_website',
-    password: 'superuserpasscode',
-    port: 5432,
+    user: process.env.DB_USER,  // Use DB_USER from .env
+    host: process.env.DB_HOST,  // Use DB_HOST from .env
+    database: process.env.DB_NAME,  // Use DB_NAME from .env
+    password: process.env.DB_PASSWORD,  // Use DB_PASSWORD from .env
+    port: process.env.DB_PORT,  // Use DB_PORT from .env
 });
 
 // Connect to the PostgreSQL database
