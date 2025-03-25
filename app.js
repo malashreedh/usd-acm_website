@@ -57,7 +57,7 @@ app.get('/events', (req, res) => {
   });
 });
 
-// Route to add a new event (insert into upcoming events)
+// Route to add a new event request
 app.post('/event_requests', (req, res) => {
   const { name, date, location, description } = req.body;
 
