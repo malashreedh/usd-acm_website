@@ -38,13 +38,13 @@ body {
   
   /* Header Text Color */
   h1, h2 {
-    color: lightblue;         /* Light blue for main header and sub-header */
+    color: white;         /* Light blue for main header and sub-header */
     text-align: center;  /* Center align the main header */
   }
   
   /* Paragraphs and other text inside the container */
   p {
-    color: lightgreen;        /* Light green for paragraph text */
+    color: lightblue;        /* Light green for paragraph text */
     font-size: 1rem;          /* Adjusted font size for readability */
   }
   
