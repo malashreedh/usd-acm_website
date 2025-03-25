@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 requestedEventsList.innerHTML = '';
 
                 // Display upcoming events
-                if (events.length === 0) {
+                if (!events || events.length === 0) {
                     eventsList.innerHTML = "<p>No upcoming events available at the moment.</p>";
                 } else {
                     events.forEach(event => {
@@ -26,17 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         const formattedDate = eventDate instanceof Date && !isNaN(eventDate) ? eventDate.toLocaleDateString() : 'No date available';
 
                         eventCard.innerHTML = `
-                            <h2>${event.name}</h2>
+                            <h2>${event.name || 'No event name'}</h2>
                             <p><strong>Date:</strong> ${formattedDate}</p>
-                            <p><strong>Location:</strong> ${event.location}</p>
-                            <p><strong>Description:</strong> ${event.description}</p>
+                            <p><strong>Location:</strong> ${event.location || 'No location'}</p>
+                            <p><strong>Description:</strong> ${event.description || 'No description available'}</p>
                         `;
                         eventsList.appendChild(eventCard);
                     });
                 }
 
                 // Display requested events
-                if (requestedEvents.length === 0) {
+                if (!requestedEvents || requestedEvents.length === 0) {
                     requestedEventsList.innerHTML = "<p>No requested events available at the moment.</p>";
                 } else {
                     requestedEvents.forEach(event => {
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         const formattedDate = eventDate instanceof Date && !isNaN(eventDate) ? eventDate.toLocaleDateString() : 'No date available';
 
                         eventCard.innerHTML = `
-                            <h2>${event.event_name}</h2>
+                            <h2>${event.event_name || 'No event name'}</h2>
                             <p><strong>Date:</strong> ${formattedDate}</p>
-                            <p><strong>Location:</strong> ${event.location}</p>
-                            <p><strong>Description:</strong> ${event.event_description}</p>
-                            <p>Upvotes: <span class="upvotes">${event.upvotes}</span> | Downvotes: <span class="downvotes">${event.downvotes}</span></p>
+                            <p><strong>Location:</strong> ${event.location || 'No location'}</p>
+                            <p><strong>Description:</strong> ${event.event_description || 'No description available'}</p>
+                            <p>Upvotes: <span class="upvotes">${event.upvotes || 0}</span> | Downvotes: <span class="downvotes">${event.downvotes || 0}</span></p>
                             <button class="upvote" data-id="${event.id}">Upvote</button>
                             <button class="downvote" data-id="${event.id}">Downvote</button>
                         `;
