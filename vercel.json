@@ -12,10 +12,6 @@
       "dest": "/app.js"
     }
   ],
-  "static": {
-    "src": "public/**/*",
-    "dest": "/public/"
-  },
   "env": {
     "DB_USER": "postgres",
     "DB_PASSWORD": "k_bp7EZmi#f!5#9",
