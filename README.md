@@ -1,10 +1,10 @@
-##USD-ACM Website
+## USD-ACM Website
 **Deployed here: https://usdacmclub.vercel.app/**
 
 This repository contains the code for the USD-ACM website, designed to provide information about the Association for Computing Machinery (ACM) club at the University of South Dakota (USD). The website allows users to view upcoming events, submit event requests, and interact with the events by upvoting or downvoting them.
 
-#Tech Stack
-**Frontend
+# Tech Stack
+**Frontend**
 HTML: The structure of the web pages is created using HTML. It provides the layout and content for the website.
 
 CSS: The styling of the website is done using custom CSS. It includes styles for the navigation bar, event cards, and other components.
@@ -13,7 +13,7 @@ JavaScript: JavaScript is used to add interactivity to the website. It enables t
 
 Fetch API: The Fetch API is used to make HTTP requests to the backend for retrieving and submitting data.
 
-**Backend
+**Backend**
 Node.js: The backend is built using Node.js. It provides the server-side logic for handling requests, processing data, and interacting with the database.
 
 Express.js: Express.js is used as a web framework for handling routes and simplifying the creation of the server.
@@ -22,10 +22,10 @@ PostgreSQL: The database used to store event data, user interactions (upvotes/do
 
 Supabase: Supabase is used for managing the PostgreSQL database. It provides a hosted service for PostgreSQL, simplifying database management.
 
-**Deployment
+**Deployment**
 Vercel: The website is deployed on Vercel, which provides an easy-to-use platform for deploying Node.js applications. Vercel automatically handles deployments, scaling, and performance optimizations.
 
-#Features
+# Features
 View Upcoming Events: The homepage displays upcoming events fetched from the PostgreSQL database.
 
 Event Request Submission: Users can submit new event requests through a form. These requests are stored in the database for review.
@@ -34,8 +34,8 @@ Upvoting and Downvoting: Registered users can upvote or downvote events, influen
 
 Event Display: The events are displayed dynamically with relevant information such as date, location, description, and vote counts.
 
-**Installation
-**Prerequisites
+**Installation**
+**Prerequisites**
 Before running the project locally, ensure you have the following installed:
 
 Node.js
@@ -76,7 +76,7 @@ Copy
 npm start
 The application will be available at http://localhost:3000.
 
-**Database Setup
+**Database Setup**
 PostgreSQL: The website uses a PostgreSQL database to store event data and vote information. You can either set up your local PostgreSQL instance or use Supabase for a hosted solution.
 
 Tables:
@@ -89,7 +89,7 @@ event_votes: Stores upvotes and downvotes for event requests.
 
 members: Stores information about the club members (for handling upvotes and downvotes).
 
-**Deployment
+**Deployment**
 This project is deployed using Vercel. Vercel automatically builds and deploys the project when changes are pushed to the repository. The website is live and accessible at [your-vercel-url].
 
 To redeploy or update the project:
@@ -98,5 +98,5 @@ Push changes to the GitHub repository.
 
 Vercel will automatically build and deploy the project with the latest changes.
 
-**License
+**License**
 This project is licensed under the MIT License.
