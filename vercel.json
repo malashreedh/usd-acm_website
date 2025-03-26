@@ -6,17 +6,21 @@
       "use": "@vercel/node"
     }
   ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.js"
+    }
+  ],
+  "static": {
+    "src": "public/**/*",
+    "dest": "/public/"
+  },
   "env": {
     "DB_USER": "postgres",
     "DB_PASSWORD": "k_bp7EZmi#f!5#9",
     "DB_HOST": "db.rifecxwspnzibcjfvs.supa.co",
     "DB_PORT": "5432",
     "DB_NAME": "postgres"
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.js"
-    }
-  ]
+  }
 }
