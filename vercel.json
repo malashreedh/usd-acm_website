@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "public": "public",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/home.html"
-    }
-  ],
   "env": {
     "DB_USER": "postgres",
     "DB_PASSWORD": "k_bp7EZmi#f!5#9",
