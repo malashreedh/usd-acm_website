@@ -1,15 +1,10 @@
 {
   "version": 2,
-  "builds": [
+  "public": "public",
+  "rewrites": [
     {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.js"
+      "source": "/",
+      "destination": "/home.html"
     }
   ],
   "env": {

@@ -2,100 +2,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventsList = document.getElementById("events-list");
     const requestedEventsList = document.getElementById("requested-events-list");
 
-    // Fetch both upcoming events and requested events from the backend
     function loadEvents() {
-        fetch("http://localhost:3000/events")
+        fetch("/api/events")
             .then(response => response.json())
             .then(data => {
-                const events = data.events;
-                const requestedEvents = data.requestedEvents;
+                const events = data.events || [];
+                const requestedEvents = data.requestedEvents || [];
 
-                // Clear the existing lists before adding new events
                 eventsList.innerHTML = '';
                 requestedEventsList.innerHTML = '';
 
-                // Display upcoming events
-                if (!events || events.length === 0) {
+                // Render upcoming events
+                if (events.length === 0) {
                     eventsList.innerHTML = "<p>No upcoming events available at the moment.</p>";
                 } else {
                     events.forEach(event => {
                         const eventCard = document.createElement("div");
                         eventCard.classList.add("event-card");
 
-                        const eventDate = new Date(event.date);
-                        const formattedDate = eventDate instanceof Date && !isNaN(eventDate) ? eventDate.toLocaleDateString() : 'No date available';
+                        const formattedDate = formatDate(event.created_at || event.date);
 
                         eventCard.innerHTML = `
-                            <h2>${event.name || 'No event name'}</h2>
+                            <h2>${event.event_name || event.name || 'No event name'}</h2>
                             <p><strong>Date:</strong> ${formattedDate}</p>
-                            <p><strong>Location:</strong> ${event.location || 'No location'}</p>
-                            <p><strong>Description:</strong> ${event.description || 'No description available'}</p>
+                            <p><strong>Location:</strong> ${event.event_location || event.location || 'No location'}</p>
+                            <p><strong>Description:</strong> ${event.event_description || event.description || 'No description available'}</p>
                         `;
                         eventsList.appendChild(eventCard);
                     });
                 }
 
-                // Display requested events
-                if (!requestedEvents || requestedEvents.length === 0) {
+                // Render requested events
+                if (requestedEvents.length === 0) {
                     requestedEventsList.innerHTML = "<p>No requested events available at the moment.</p>";
                 } else {
                     requestedEvents.forEach(event => {
                         const eventCard = document.createElement("div");
                         eventCard.classList.add("event-card");
 
-                        const eventDate = new Date(event.date);
-                        const formattedDate = eventDate instanceof Date && !isNaN(eventDate) ? eventDate.toLocaleDateString() : 'No date available';
+                        const formattedDate = formatDate(event.created_at || event.date);
 
                         eventCard.innerHTML = `
                             <h2>${event.event_name || 'No event name'}</h2>
                             <p><strong>Date:</strong> ${formattedDate}</p>
-                            <p><strong>Location:</strong> ${event.location || 'No location'}</p>
+                            <p><strong>Location:</strong> ${event.event_location || 'No location'}</p>
                             <p><strong>Description:</strong> ${event.event_description || 'No description available'}</p>
                             <p>Upvotes: <span class="upvotes">${event.upvotes || 0}</span> | Downvotes: <span class="downvotes">${event.downvotes || 0}</span></p>
                             <button class="upvote" data-id="${event.id}">Upvote</button>
                             <button class="downvote" data-id="${event.id}">Downvote</button>
                         `;
 
-                        // Add event listeners for upvote/downvote buttons
-                        eventCard.querySelector(".upvote").addEventListener("click", function() {
-                            const eventId = event.id;
-                            const memberId = 1; // You should get the logged-in member's ID here
+                        // Add vote button listeners
+                        addVoteListener(eventCard, event.id, "upvote");
+                        addVoteListener(eventCard, event.id, "downvote");
 
-                            fetch(`http://localhost:3000/event-requests/${eventId}/upvote`, {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({ member_id: memberId })
-                            })
-                            .then(response => response.text())
-                            .then(data => {
-                                alert(data);
-                                loadEvents(); // Reload the event list dynamically
-                            })
-                            .catch((error) => console.error("Error:", error));
-                        });
-
-                        eventCard.querySelector(".downvote").addEventListener("click", function() {
-                            const eventId = event.id;
-                            const memberId = 1; // You should get the logged-in member's ID here
-
-                            fetch(`http://localhost:3000/event-requests/${eventId}/downvote`, {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({ member_id: memberId })
-                            })
-                            .then(response => response.text())
-                            .then(data => {
-                                alert(data);
-                                loadEvents(); // Reload the event list dynamically
-                            })
-                            .catch((error) => console.error("Error:", error));
-                        });
-
-                        // Append the requested event card to the requested events list
                         requestedEventsList.appendChild(eventCard);
                     });
                 }
@@ -107,47 +67,58 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Load events initially
+    function addVoteListener(card, eventId, type) {
+        const button = card.querySelector(`.${type}`);
+        button.addEventListener("click", () => {
+            const memberId = 1; // Ideally should be dynamic
+            fetch(`/api/event-vote?id=${eventId}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ member_id: memberId, voteType: type }),
+            })
+                .then(res => res.text())
+                .then(alert)
+                .then(loadEvents)
+                .catch(err => console.error(`Error during ${type}:`, err));
+        });
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return (date instanceof Date && !isNaN(date)) ? date.toLocaleDateString() : "No date available";
+    }
+
+    // Initial load
     loadEvents();
 
-    // Event form handling for adding a new event request
+    // Handle event submission
     const eventForm = document.getElementById("add-event-form");
     if (eventForm) {
-        eventForm.addEventListener("submit", function(e) {
+        eventForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            // Gather form data
-            const eventName = document.getElementById("event-name").value;
-            const eventDate = document.getElementById("event-date").value;
-            const eventLocation = document.getElementById("event-location").value;
-            const eventDescription = document.getElementById("event-description").value;
-
-            // Prepare data for submission
             const newEvent = {
-                name: eventName,
-                date: eventDate,
-                location: eventLocation,
-                description: eventDescription
+                name: document.getElementById("event-name").value,
+                date: document.getElementById("event-date").value,
+                location: document.getElementById("event-location").value,
+                description: document.getElementById("event-description").value,
             };
 
-            // Send the event data to the backend via a POST request
-            fetch("http://localhost:3000/event_requests", {
+            fetch("/api/event_requests", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newEvent),
             })
-            .then(response => response.text())
-            .then(data => {
-                alert(data); // Notify user that the event was successfully added
-                eventForm.reset();  // Clear the form fields
-                loadEvents();  // Reload the event list dynamically
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Failed to add event");
-            });
+                .then(res => res.text())
+                .then(msg => {
+                    alert(msg);
+                    eventForm.reset();
+                    loadEvents();
+                })
+                .catch(err => {
+                    console.error("Error adding event:", err);
+                    alert("Failed to add event");
+                });
         });
     }
 });
